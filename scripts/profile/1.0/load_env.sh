@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #==============================================================================
 #title           :load_env
 #description     :This script loads up individual enviroments which are defined in the .env file of the user.

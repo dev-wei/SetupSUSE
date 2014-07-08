@@ -1,28 +1,28 @@
 #!/bin/bash
 #==============================================================================
-#title           :setup-env
+#title           :setup
 #description     :This script will invoke load-env or unload-env properly.
 #author			 :michael.wei
 #date            :20140702
 #version         :1.0    
-#usage		 	 :bash setup_env.sh "Dev"
+#usage		 	 :bash setup.sh "Dev"
 #bash_version    :4.1.5(1)-release
 #==============================================================================
 set -e
-source "$HOME/scripts/color-echo.sh"
+source "$HOME/scripts/utilities/color_echo.sh"
 
-AllowedHosts=${AllowedHosts-"fraitcf1vd2382 USNYCWS596931"}
-Version=${Version-"current"}
-Environment=${1-"Dev"}
+allowed_hosts="${allowed_hosts-"fraitcf1vd2382 USNYCWS596931"}"
+version="${version-"1.0"}"
+environment="${1-"dev"}"
 
 function load_env {
 	echo "Load $1 environment on $HOSTNAME"
-	. "$ENVY_ROOT_DIR/load_env.sh" $1
+	. "$ENVY_ROOT_DIR/load.sh" $1
 }
 
 function unload_env {
 	echo "Unload $1 environment on $HOSTNAME"
-  . "$ENVY_ROOT_DIR/unload_env.sh" $1
+  . "$ENVY_ROOT_DIR/unload.sh" $1
 }
 
 function contains {
@@ -32,12 +32,11 @@ function contains {
   return 1
 }
 
-ENVY_ROOT_DIR=$HOME/scripts/profile/$Version
+ENVY_ROOT_DIR="$HOME/scripts/profile/current"
 export ENVY_ROOT_DIR
-echo "Export ENVY_ROOT_DIR=$ENVY_ROOT_DIR"
 
-if contains "$AllowedHosts" "$HOSTNAME"; then
-	load_env $Environment
+if contains "$allowed_hosts" "$HOSTNAME"; then
+	load_env $environment
 else
 	cecho "ERROR !!!!!!! unknown box $HOSTNAME" $red
 fi

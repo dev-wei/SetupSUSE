@@ -1,9 +1,7 @@
-HOME="C:/Users/wmichae/Documents/My Projects/FlowPricerWebService/trunk/src/main/server_scripts"
+HOME="C:/Users/wmichae/Documents/My Projects/FlowPricerWebService/trunk/src/main/deployment"
 export HOME
 
-Environment="Test"
+version="1.0"
+export version
 
-Version="1.0"
-export Version
-
-. "$HOME/scripts/profile/1.0/setup_env.sh" $Environment
+. "$HOME/scripts/profile/1.0/setup.sh" "dev"

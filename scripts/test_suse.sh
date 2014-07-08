@@ -1,4 +1,5 @@
-Version="1.0"
-export Version
+version="1.0"
+export version
 
-. "$HOME/scripts/profile/1.0/setup_env.sh" "Dev"
+. "$HOME/scripts/pre-release/deploy.sh" "dev"
+. "$HOME/scripts/profile/1.0/setup.sh" "dev"
